@@ -1,0 +1,10 @@
+.countries-col {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.button {
+    width: 16rem;
+    margin: 0 4rem;
+}

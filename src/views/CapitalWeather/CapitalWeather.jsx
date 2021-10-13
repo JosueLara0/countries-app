@@ -4,8 +4,11 @@ import {Link, useParams} from "react-router-dom";
 import {Button, Card} from 'react-bootstrap';
 
 // APIs
-import {getWeatherAPI} from '../APIs/getWeatherAPI';
-import LoadingSpinner from '../components/LoadingSpinner';
+import {getWeatherAPI} from '../../APIs/getWeatherAPI';
+import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
+
+// Styles
+import "./CapitalWeather.styles.css";
 
 const CapitalWeather = () => {
     const {country, capital} = useParams();
@@ -16,21 +19,20 @@ const CapitalWeather = () => {
         const fetchWeatherAPI = async () => {
             const response = await getWeatherAPI(capital);
             setCapitalWeather(response);
-            console.log(response);
         };
         fetchWeatherAPI();
     }, [capital]);
 
 
     return (
-        <div style={{display:'flex', justifyContent:"center", marginTop:"2rem"} }>
+        <div className="container-weather">
             {capitalWeather ? (
-                <Card style={{width: '20rem'}} bg="dark" text="white">
+                <Card className="weather-card" bg="dark" text="white">
                     <Card.Body>
                         <Card.Img variant="top"
                                   src={`https://openweathermap.org/img/w/${capitalWeather.weather[0].icon}.png`}
-                                  alt=""
-                                  style={{height: '10rem'}}/>
+                                  alt={capital}
+                        />
                         <Card.Title>{capital} Weather</Card.Title>
                         <Card.Text>Weather: {capitalWeather.weather[0].description}</Card.Text>
                         <Card.Text>Wind speed: {capitalWeather.wind.speed} m/s</Card.Text>
@@ -38,12 +40,12 @@ const CapitalWeather = () => {
                         <Card.Text>Humidity: {capitalWeather.main.humidity} %</Card.Text>
                         <Card.Text>Temperature: {capitalWeather.main.temp} °F</Card.Text>
                     </Card.Body>
-                    <Card.Body style={{display: "flex", justifyContent: "space-between", flexWrap: "wrap"}}>
+                    <Card.Body className="buttons-card">
                         <Button variant="outline-light">
-                            <Link to={`/`} style={{textDecoration:"none", color:"#e2bb4d"}}>Back Home</Link>
+                            <Link to={`/`}>Back Home</Link>
                         </Button>
                         <Button variant="outline-light">
-                            <Link to={`/details/${country}`} style={{textDecoration:"none", color:"#e2bb4d"}}>Back Country Details</Link>
+                            <Link to={`/details/${country}`}>Back Country Details</Link>
                         </Button>
                     </Card.Body>
                 </Card>

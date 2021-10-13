@@ -1,0 +1,19 @@
+.country-details {
+    display: flex;
+    justify-content: center;
+}
+
+.country-card {
+    width: 20rem;
+    margin-top: 2rem;
+}
+
+.country-card-body {
+    display: flex;
+    justify-content: space-between;
+}
+
+.country-details a {
+    text-decoration: none;
+    color: #e2bb4d;
+}

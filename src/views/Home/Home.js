@@ -2,18 +2,18 @@
 import React, {useState, useEffect} from 'react';
 import {Container, Row, Col, Button} from 'react-bootstrap';
 
-// APIs
-import {getCountriesAPI} from '../APIs/getCountriesAPI';
+// Views
+import CountryPage from '../CountryPage';
 
 // Components
-import Country from '../components/CountryPage/Country';
-import LoadingSpinner from '../components/LoadingSpinner';
+import Country from '../../components/CountryPage/Country/Country';
+import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 
-//Views
-import CountryPage from './CountryPage';
+// APIs
+import {getCountriesAPI} from '../../APIs/getCountriesAPI';
 
-//Styles
-
+// Styles
+import "./Home.styles.css";
 
 const Home = () => {
     const [CountriesData, setCountriesData] = useState([]);
@@ -26,7 +26,6 @@ const Home = () => {
             const path = "all";
             const response = await getCountriesAPI(path);
             setCountriesData(response);
-            // console.log(response);
         };
         handleFetchCountriesAPI();
     }, []);
@@ -55,23 +54,23 @@ const Home = () => {
     ));
 
     return (
-        <div>
+        <>
             {CountriesData.length > 4 ? (
                 <Container fluid>
                     <Row>
                         <Col md={4}>
                             <CountryPage/>
                         </Col>
-                        <Col md={8} style={{display: "flex", justifyContent: "space-between", flexWrap: "wrap"}}>
+                        <Col md={8} className="countries-col">
                             {CountriesList}
                             <Button onClick={handlePreviousPageButton}
                                     variant="outline-light"
-                                    style={{width: '16rem', marginRight: "4rem", marginLeft: "4rem"}}>
+                                    className="button">
                                 Previous Countries
                             </Button>
                             <Button onClick={handleNextPageButton}
                                     variant="outline-light"
-                                    style={{width: '16rem', marginRight: "4rem", marginLeft: "4rem"}}>
+                                    className="button">
                                 More Countries
                             </Button>
                         </Col>
@@ -79,7 +78,7 @@ const Home = () => {
                 </Container>
             ) : (<LoadingSpinner/>)
             }
-        </div>
+        </>
     );
 };
 

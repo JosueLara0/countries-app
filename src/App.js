@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+// Libraries
+import React from "react";
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+
+// Layout
+import MainLayout from './layouts/MainLayout';
+
+// Views
+import Home from "./views/Home/Home";
+import CountryDetails from "./views/CountryDetails/CountryDetails";
+import CapitalWeather from './views/CapitalWeather/CapitalWeather';
+import NotFound from "./views/NotFound/NotFound";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Router>
+            <MainLayout>
+                <Switch>
+                    <Route path="/" exact>
+                        <Home/>
+                    </Route>
+                    <Route path="/details/:country" exact>
+                        <CountryDetails/>
+                    </Route>
+                    <Route path="/weather/:country/:capital" exact>
+                        <CapitalWeather/>
+                    </Route>
+                    <Route path="*">
+                        <NotFound/>
+                    </Route>
+                </Switch>
+            </MainLayout>
+        </Router>
+    );
 }
 
 export default App;

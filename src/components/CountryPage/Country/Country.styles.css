@@ -1,0 +1,13 @@
+.country {
+    width: 16rem;
+    margin: 1rem 4rem;
+}
+
+.country img {
+    height: 6rem;
+}
+
+.country a {
+    text-decoration: none;
+    color: #e2bb4d;
+}

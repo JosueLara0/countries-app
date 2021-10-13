@@ -1,0 +1,24 @@
+.container-weather {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.weather-card {
+    width: 20rem;
+}
+
+.weather-card img {
+    height: 10rem;
+}
+
+.buttons-card {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container-weather a {
+    text-decoration: none;
+    color: #e2bb4d;
+
+}
