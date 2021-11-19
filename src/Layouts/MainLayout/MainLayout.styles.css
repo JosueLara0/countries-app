@@ -1,0 +1,6 @@
+.main-layout {
+  background-image: url("../../assets/background-map.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
